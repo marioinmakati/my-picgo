@@ -1,0 +1,136 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 700" width="900" height="700">
+  <defs>
+    <style>
+      .title { font: bold 24px sans-serif; fill: #e2e8f0; }
+      .subtitle { font: 14px sans-serif; fill: #94a3b8; }
+      .label { font: bold 14px sans-serif; }
+      .small-label { font: 12px sans-serif; fill: #94a3b8; }
+      .tiny-label { font: bold 10px sans-serif; fill: white; }
+      .desc { font: 13px sans-serif; fill: #cbd5e1; }
+    </style>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="900" height="700" fill="#0f172a"/>
+  
+  <!-- Title -->
+  <text x="450" y="40" text-anchor="middle" class="title">Go 进程 / 线程 / 协程 关系图</text>
+  <text x="450" y="62" text-anchor="middle" class="subtitle">GMP 调度模型</text>
+  
+  <!-- Process Container (Blue) -->
+  <rect x="30" y="80" width="840" height="420" rx="16" fill="#172554" fill-opacity="0.3" stroke="#3b82f6" stroke-width="4"/>
+  <circle cx="55" cy="105" r="6" fill="#3b82f6"/>
+  <text x="70" y="110" class="label" fill="#60a5fa">进程 (Process)</text>
+  <text x="200" y="110" class="small-label">- 一个 Go 程序 = 一个进程</text>
+  
+  <!-- Runtime Container (Purple) -->
+  <rect x="50" y="125" width="800" height="360" rx="12" fill="#4c1d95" fill-opacity="0.2" stroke="#a855f7" stroke-width="2"/>
+  <circle cx="70" cy="145" r="5" fill="#a855f7"/>
+  <text x="82" y="150" class="label" fill="#c084fc">Go Runtime 调度器</text>
+  
+  <!-- Thread M1 (Orange) -->
+  <rect x="70" y="170" width="230" height="200" rx="8" fill="#431407" fill-opacity="0.3" stroke="#f97316" stroke-width="2"/>
+  <circle cx="85" cy="188" r="4" fill="#f97316"/>
+  <text x="95" y="193" class="label" fill="#fb923c">M1 (线程)</text>
+  
+  <!-- P1 (Yellow) -->
+  <rect x="85" y="210" width="200" height="120" rx="6" fill="#422006" fill-opacity="0.3" stroke="#eab308" stroke-width="2"/>
+  <text x="100" y="230" font-size="12" fill="#facc15">P1 (处理器)</text>
+  
+  <!-- Goroutines in P1 -->
+  <rect x="95" y="245" width="35" height="35" rx="4" fill="#22c55e"/>
+  <text x="112" y="268" text-anchor="middle" class="tiny-label">G1</text>
+  <rect x="135" y="245" width="35" height="35" rx="4" fill="#22c55e"/>
+  <text x="152" y="268" text-anchor="middle" class="tiny-label">G2</text>
+  <rect x="175" y="245" width="35" height="35" rx="4" fill="#22c55e"/>
+  <text x="192" y="268" text-anchor="middle" class="tiny-label">G3</text>
+  <rect x="215" y="245" width="35" height="35" rx="4" fill="#16a34a" fill-opacity="0.5"/>
+  <text x="232" y="268" text-anchor="middle" class="tiny-label">G4</text>
+  <rect x="255" y="245" width="25" height="35" rx="4" fill="#16a34a" fill-opacity="0.5"/>
+  <text x="267" y="268" text-anchor="middle" font-size="8" fill="white">G5</text>
+  
+  <rect x="95" y="285" width="35" height="35" rx="4" fill="#16a34a" fill-opacity="0.5"/>
+  <text x="112" y="308" text-anchor="middle" class="tiny-label">G6</text>
+  
+  <text x="185" y="355" text-anchor="middle" class="small-label">运行中 ▶</text>
+  
+  <!-- Thread M2 (Orange) -->
+  <rect x="320" y="170" width="230" height="200" rx="8" fill="#431407" fill-opacity="0.3" stroke="#f97316" stroke-width="2"/>
+  <circle cx="335" cy="188" r="4" fill="#f97316"/>
+  <text x="345" y="193" class="label" fill="#fb923c">M2 (线程)</text>
+  
+  <!-- P2 (Yellow) -->
+  <rect x="335" y="210" width="200" height="120" rx="6" fill="#422006" fill-opacity="0.3" stroke="#eab308" stroke-width="2"/>
+  <text x="350" y="230" font-size="12" fill="#facc15">P2 (处理器)</text>
+  
+  <!-- Goroutines in P2 -->
+  <rect x="345" y="245" width="35" height="35" rx="4" fill="#22c55e"/>
+  <text x="362" y="268" text-anchor="middle" class="tiny-label">G7</text>
+  <rect x="385" y="245" width="35" height="35" rx="4" fill="#22c55e"/>
+  <text x="402" y="268" text-anchor="middle" class="tiny-label">G8</text>
+  <rect x="425" y="245" width="35" height="35" rx="4" fill="#16a34a" fill-opacity="0.5"/>
+  <text x="442" y="268" text-anchor="middle" class="tiny-label">G9</text>
+  <rect x="465" y="245" width="35" height="35" rx="4" fill="#16a34a" fill-opacity="0.5"/>
+  <text x="482" y="268" text-anchor="middle" font-size="8" fill="white">G10</text>
+  
+  <text x="435" y="355" text-anchor="middle" class="small-label">运行中 ▶</text>
+  
+  <!-- Thread M3 (Orange - Idle) -->
+  <rect x="570" y="170" width="230" height="200" rx="8" fill="#431407" fill-opacity="0.15" stroke="#f97316" stroke-width="2" stroke-opacity="0.5"/>
+  <circle cx="585" cy="188" r="4" fill="#f97316" fill-opacity="0.5"/>
+  <text x="595" y="193" class="label" fill="#fb923c" fill-opacity="0.5">M3 (线程)</text>
+  
+  <!-- Empty P slot -->
+  <rect x="585" y="210" width="200" height="120" rx="6" fill="none" stroke="#475569" stroke-width="2" stroke-dasharray="8,4"/>
+  <text x="685" y="275" text-anchor="middle" class="small-label">空闲 / 系统调用</text>
+  
+  <text x="685" y="355" text-anchor="middle" class="small-label">休眠 💤</text>
+  
+  <!-- Global Queue -->
+  <rect x="70" y="385" width="780" height="80" rx="8" fill="#1e293b" fill-opacity="0.5" stroke="#475569" stroke-width="2"/>
+  <text x="90" y="410" font-size="13" fill="#94a3b8">全局队列 (Global Run Queue)</text>
+  
+  <rect x="90" y="420" width="35" height="35" rx="4" fill="#15803d" fill-opacity="0.5"/>
+  <text x="107" y="443" text-anchor="middle" font-size="8" fill="white">G11</text>
+  <rect x="130" y="420" width="35" height="35" rx="4" fill="#15803d" fill-opacity="0.5"/>
+  <text x="147" y="443" text-anchor="middle" font-size="8" fill="white">G12</text>
+  <rect x="170" y="420" width="35" height="35" rx="4" fill="#15803d" fill-opacity="0.5"/>
+  <text x="187" y="443" text-anchor="middle" font-size="8" fill="white">G13</text>
+  <rect x="210" y="420" width="35" height="35" rx="4" fill="#15803d" fill-opacity="0.5"/>
+  <text x="227" y="443" text-anchor="middle" font-size="8" fill="white">G14</text>
+  <text x="260" y="443" fill="#64748b">...</text>
+  
+  <!-- Legend -->
+  <rect x="30" y="520" width="200" height="55" rx="8" fill="#1e293b"/>
+  <rect x="45" y="535" width="16" height="16" rx="2" fill="#3b82f6"/>
+  <text x="70" y="548" class="label" fill="#60a5fa">进程</text>
+  <text x="70" y="563" font-size="11" fill="#94a3b8">Process</text>
+  
+  <rect x="145" y="535" width="16" height="16" rx="2" fill="#f97316"/>
+  <text x="170" y="548" class="label" fill="#fb923c">M-线程</text>
+  <text x="170" y="563" font-size="11" fill="#94a3b8">OS Thread</text>
+  
+  <rect x="250" y="520" width="200" height="55" rx="8" fill="#1e293b"/>
+  <rect x="265" y="535" width="16" height="16" rx="2" fill="#eab308"/>
+  <text x="290" y="548" class="label" fill="#facc15">P-处理器</text>
+  <text x="290" y="563" font-size="11" fill="#94a3b8">Processor</text>
+  
+  <rect x="385" y="535" width="16" height="16" rx="2" fill="#22c55e"/>
+  <text x="410" y="548" class="label" fill="#4ade80">G-协程</text>
+  <text x="410" y="563" font-size="11" fill="#94a3b8">Goroutine</text>
+  
+  <!-- Relationship Box -->
+  <rect x="480" y="520" width="390" height="165" rx="8" fill="#1e293b"/>
+  <text x="500" y="545" class="label" fill="#e2e8f0">包含关系</text>
+  
+  <text x="500" y="575" fill="#60a5fa" font-size="13" font-family="monospace">1 进程</text>
+  <text x="570" y="575" fill="#64748b" font-size="13">→</text>
+  <text x="590" y="575" fill="#fb923c" font-size="13" font-family="monospace">N 线程(M)</text>
+  <text x="690" y="575" fill="#64748b" font-size="13">→</text>
+  <text x="710" y="575" fill="#4ade80" font-size="13" font-family="monospace">M 协程(G)</text>
+  
+  <text x="500" y="600" class="desc">• M: 操作系统线程，由 Go runtime 创建</text>
+  <text x="500" y="620" class="desc">• P: 逻辑处理器，数量 = GOMAXPROCS</text>
+  <text x="500" y="640" class="desc">• G: 轻量协程，初始栈仅 2KB</text>
+  <text x="500" y="660" class="desc">• 调度: G → P → M</text>
+</svg>
